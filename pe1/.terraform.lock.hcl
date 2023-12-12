@@ -4,6 +4,7 @@
 provider "registry.terraform.io/ciscodevnet/iosxe" {
   version = "0.5.1"
   hashes = [
+    "h1:e4HXFHqKgYWuUM/vFbj+5KHkLXDA83emfJzBocXpz5c=",
     "h1:zvQdgzmiTQSKsGKOJSNLqZl9XeJikFRCdlGARrBrgKY=",
     "zh:29adf51c4ccb62d1da479b01f708d5ff040ac392cc5fd8ce485760a9332f40c4",
     "zh:31c1fb29564817e006ce0c0d38f2e125d43a28569358213a650b52cfd9decc15",

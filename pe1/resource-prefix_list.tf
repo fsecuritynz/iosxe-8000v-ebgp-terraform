@@ -4,7 +4,8 @@ resource "iosxe_prefix_list" "isp_internet_pl-out" {
       name   = "pl-pe1-out"
       seq    = 10
       action = "permit"
-      ip     = "0.0.0.0/32"
+      ip     = "0.0.0.0/0"
+      le     = 32
     }
   ]
 }
@@ -15,6 +16,17 @@ resource "iosxe_prefix_list" "isp_internet_pl-in" {
       seq    = 10
       action = "permit"
       ip     = "110.10.20.30/32"
+    }
+  ]
+}
+resource "iosxe_prefix_list" "isp_internet_pl-all" {
+  prefixes = [
+    {
+      name   = "pl-all"
+      seq    = 10
+      action = "permit"
+      ip     = "0.0.0.0/0"
+      le     = 32
     }
   ]
 }
