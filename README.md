@@ -1,7 +1,15 @@
 # iosxe-8000v-ebgp-terraform
 
 # Overview
-Utilises the new Cisco IOS-XE Terraform Provider
+Utilises the new Cisco IOS-XE Terraform Provider to deploy:
+- Interfaces
+- VRF's
+- Prefix Lists
+- Prefix Lists from CSV
+- Route Maps
+- eBGP Configuration
+- Static Routes
+
 https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs
 
 # Topology

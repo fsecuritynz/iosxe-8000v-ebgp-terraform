@@ -1,0 +1,5 @@
+name,seq,action,ip,ge,le
+pl-internet-prefixes,10,permit,1.1.1.1/32,,
+pl-rfc1918,10,permit,10.0.0.0/8,,32
+pl-rfc1918,20,permit,172.16.0.0/12,,32
+pl-rfc1918,30,permit,192.168.0.0/16,,32
