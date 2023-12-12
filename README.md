@@ -1,5 +1,6 @@
 # iosxe-8000v-ebgp-terraform
-![image](https://github.com/fsecuritynz/iosxe-8000v-ebgp-terraform/assets/45273776/c1f3ba73-d55f-4036-ac23-4120b9b1b9de)
+![image](https://github.com/fsecuritynz/iosxe-8000v-ebgp-terraform/assets/45273776/75b9d1b3-8e86-4ae9-8cdd-65f9a9a69f12)
+
 
 
 # Overview
