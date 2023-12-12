@@ -1,0 +1,89 @@
+CE1#show int description
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       _to_PROVIDER_PE1-Internet
+Lo10                           up             up       Apple Test Loopback
+
+
+
+
+
+
+CE1#show ip int br
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       10.8.8.22       YES NVRAM  up                    up      
+GigabitEthernet2       200.1.1.2       YES other  up                    up      
+Loopback10             110.10.20.30    YES other  up                    up      
+
+
+
+CE1#show vrf
+  Name                             Default RD            Protocols   Interfaces
+  edge                             714:714               ipv4        Gi2
+                                                                     Lo10
+
+
+
+CE1#show ip route vrf edge
+
+Routing Table: edge
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP
+       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       H - NHRP, G - NHRP registered, g - NHRP registration summary
+       o - ODR, P - periodic downloaded static route, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+       & - replicated local route overrides by connected
+
+Gateway of last resort is 200.1.1.1 to network 0.0.0.0
+
+B*    0.0.0.0/0 [20/0] via 200.1.1.1, 07:06:09
+          
+
+
+CE1#show ip bgp vpnv4 vrf edge summary
+BGP router identifier 10.8.8.22, local AS number 714
+BGP table version is 4, main routing table version 4
+3 network entries using 768 bytes of memory
+3 path entries using 408 bytes of memory
+2/2 BGP path/bestpath attribute entries using 624 bytes of memory
+1 BGP AS-PATH entries using 24 bytes of memory
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+0 BGP route-map cache entries using 0 bytes of memory
+0 BGP filter-list cache entries using 0 bytes of memory
+BGP using 1824 total bytes of memory
+BGP activity 3/0 prefixes, 3/0 paths, scan interval 60 secs
+3 networks peaked at 11:55:41 Dec 12 2023 UTC (07:06:20.066 ago)
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+200.1.1.1       4         4771    2058    2058        4    0    0 07:06:19        1
+
+
+
+CE1# show ip bgp vpnv4 vrf edge neighbor 200.1.1.1 advertised-routes
+BGP table version is 4, local router ID is 10.8.8.22
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal, 
+              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter, 
+              x best-external, a additional-path, c RIB-compressed, 
+              t secondary path, L long-lived-stale,
+Origin codes: i - IGP, e - EGP, ? - incomplete
+     Network          Next Hop            Metric LocPrf Weight Path
+RPKI validation codes: V valid, I invalid, N Not found
+
+     Network          Next Hop            Metric LocPrf Weight Path
+Route Distinguisher: 714:714 (default for vrf edge)
+ *>   110.10.20.30/32  0.0.0.0                  0         32768 ?
+
+     Network          Next Hop            Metric LocPrf Weight Path
+Total number of prefixes 1 
+
+
+
+CE1#show ip bgp vpnv4 vrf edge neighbor 200.1.1.1 received-routes
+% Inbound soft reconfiguration not enabled on 200.1.1.1 (edge)

@@ -1,0 +1,87 @@
+PE1#show int description
+Interface                      Status         Protocol Description
+Gi1                            up             up       MGMT
+Gi2                            up             up       _to_APPLE_CE1-Internet
+Gi3                            up             up       UPSTREAM-GATEWAY
+
+
+
+PE1#show ip int br
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       10.8.8.21       YES manual up                    up      
+GigabitEthernet2       200.1.1.1       YES other  up                    up      
+GigabitEthernet3       200.2.2.2       YES other  up                    up      
+
+
+
+PE1#show vrf
+  Name                             Default RD            Protocols   Interfaces
+  internet                         4771:4771             ipv4        Gi3
+                                                                     Gi2
+
+
+
+PE1#show ip route vrf internet
+
+Routing Table: internet
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP
+       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       H - NHRP, G - NHRP registered, g - NHRP registration summary
+       o - ODR, P - periodic downloaded static route, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+       & - replicated local route overrides by connected
+
+Gateway of last resort is 200.2.2.1 to network 0.0.0.0
+
+S*    0.0.0.0/0 [1/0] via 200.2.2.1
+      110.0.0.0/32 is subnetted, 1 subnets
+B        110.10.20.30 [20/0] via 200.1.1.2, 07:04:05
+      200.1.1.0/24 is variably subnetted, 2 subnets, 2 masks
+C        200.1.1.0/30 is directly connected, GigabitEthernet2
+L        200.1.1.1/32 is directly connected, GigabitEthernet2
+      200.2.2.0/24 is variably subnetted, 2 subnets, 2 masks
+C        200.2.2.0/30 is directly connected, GigabitEthernet3
+L        200.2.2.2/32 is directly connected, GigabitEthernet3
+
+
+
+PE1#show ip bgp vpnv4 vrf internet summary
+BGP router identifier 10.8.8.21, local AS number 4771
+BGP table version is 12, main routing table version 12
+2 network entries using 512 bytes of memory
+2 path entries using 272 bytes of memory
+2/2 BGP path/bestpath attribute entries using 624 bytes of memory
+1 BGP AS-PATH entries using 24 bytes of memory
+0 BGP route-map cache entries using 0 bytes of memory
+0 BGP filter-list cache entries using 0 bytes of memory
+BGP using 1432 total bytes of memory
+BGP activity 4/2 prefixes, 7/5 paths, scan interval 60 secs
+4 networks peaked at 11:52:15 Dec 12 2023 UTC (07:07:35.030 ago)
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+200.1.1.2       4          714    2047    2048       12    0    0 07:04:08        1
+
+
+
+PE1#show ip bgp vpnv4 vrf internet neighbor 200.1.1.2 advertised-routes
+BGP table version is 12, local router ID is 10.8.8.21
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal, 
+              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter, 
+              x best-external, a additional-path, c RIB-compressed, 
+              t secondary path, L long-lived-stale,
+Origin codes: i - IGP, e - EGP, ? - incomplete
+RPKI validation codes: V valid, I invalid, N Not found
+
+     Network          Next Hop            Metric LocPrf Weight Path
+Route Distinguisher: 4771:4771 (default for vrf internet)
+ *>   0.0.0.0          200.2.2.1                0         32768 i
+
+Total number of prefixes 1 
+PE1#show ip bgp vpnv4 vrf internet neighbor 200.1.1.2 received-routes
+% Inbound soft reconfiguration not enabled on 200.1.1.2 (internet)
