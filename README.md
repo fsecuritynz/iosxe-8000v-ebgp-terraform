@@ -76,3 +76,8 @@ https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs
 - Remote ASN: 4771
 - Route-map Out: rm-ce1-out
 - Route-map In: rm-ce1-in
+
+
+# Missing Features from the Terraform IOSXE Provider Module 
+- Default-originate within the BGP peer
+- Soft Reconfiguration within the BGP Peer
