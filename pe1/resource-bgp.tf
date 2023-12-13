@@ -1,8 +1,15 @@
+#
+# Create Base BGP Configuration
+#
 resource "iosxe_bgp" "isprouterbgp" {
   asn                  = "4771"
   default_ipv4_unicast = false
   log_neighbor_changes = true
 }
+
+#
+# Create the Internet VRF within BGP
+#
 resource "iosxe_bgp_address_family_ipv4_vrf" "isprouterbgpvrfinternet" {
   asn     = "4771"
   af_name = "unicast"
@@ -20,6 +27,11 @@ resource "iosxe_bgp_address_family_ipv4_vrf" "isprouterbgpvrfinternet" {
     }
   ]
 }
+
+#
+# Define the eBGP neighbor within the VRF
+# Add the dependency route-maps with nested prefix-list
+#
 resource "iosxe_bgp_ipv4_unicast_vrf_neighbor" "ce1_to_pe1" {
   asn                          = "4771"
   vrf                          = "internet"

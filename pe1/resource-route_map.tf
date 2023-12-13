@@ -1,3 +1,6 @@
+#
+# Build route-maps with the prefix-lists as a dependency
+#
 resource "iosxe_route_map" "isp_internet_rm-in" {
   name = "rm-pe1-in"
   entries = [
