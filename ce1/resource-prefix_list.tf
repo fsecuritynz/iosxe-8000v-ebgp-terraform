@@ -1,3 +1,6 @@
+#
+# Define some prefix-list entries
+#
 resource "iosxe_prefix_list" "apple_internet_pl-out" {
   prefixes = [
     {

@@ -1,3 +1,7 @@
+#
+# Configure GigabitEthernet Interface, within VRF
+# Configure Loopback Interface, within VRF
+#
 resource "iosxe_interface_ethernet" "applege2" {
   type              = "GigabitEthernet"
   name              = "2"

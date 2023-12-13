@@ -1,3 +1,6 @@
+#
+# Build route-maps with the prefix-lists as a dependency
+#
 resource "iosxe_route_map" "apple_internet_rm-out" {
   name = "rm-ce1-out"
   entries = [
