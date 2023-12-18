@@ -10,6 +10,13 @@ resource "iosxe_route_map" "apple_internet_rm-out" {
       description                   = "Entry 10"
       continue                      = false
       match_ip_address_prefix_lists = ["pl-ce1-out"]
+    },
+    {
+      seq                           = 20
+      operation                     = "permit"
+      description                   = "Entry 10"
+      continue                      = false
+      match_ip_address_prefix_lists = ["pl-internet-prefixes"]
     }
   ]
 }

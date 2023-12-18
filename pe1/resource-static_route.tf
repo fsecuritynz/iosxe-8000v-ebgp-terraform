@@ -15,16 +15,12 @@ resource "iosxe_static_route_vrf" "static_default_vrf_internet_route" {
 }
 resource "iosxe_static_route_vrf" "static_default_vrf_internet_routeB" {
   vrf = "internet"
-  routes = [
-    {
-      prefix = "1.1.1.1"
-      mask   = "255.255.255.255"
-      next_hops = [
-        {
-          next_hop = "null"
-          name     = "test null route"
-        }
-      ]
-    }
-  ]
+  routes = [{
+    prefix = "0.0.0.0"
+    mask   = "0.0.0.0"
+    next_hops = [{
+      next_hop = "Null0"
+      name     = "test null route"
+    }]
+  }]
 }

@@ -17,6 +17,7 @@ resource "iosxe_bgp_address_family_ipv4_vrf" "applerouterbgpvrfinternet" {
     {
       name                                = "edge"
       ipv4_unicast_redistribute_connected = true
+      ipv4_unicast_redistribute_static = true
       ipv4_unicast_networks = [
         {
           network   = "0.0.0.0"
