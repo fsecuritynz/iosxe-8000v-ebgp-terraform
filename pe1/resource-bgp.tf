@@ -15,8 +15,8 @@ resource "iosxe_bgp_address_family_ipv4_vrf" "isprouterbgpvrfinternet" {
   af_name = "unicast"
   vrfs = [
     {
-      name                             = "internet"
-      ipv4_unicast_redistribute_static = true
+      name = "internet"
+      #      ipv4_unicast_redistribute_static = true
       ipv4_unicast_networks = [
         {
           network   = "0.0.0.0"
@@ -38,6 +38,7 @@ resource "iosxe_bgp_ipv4_unicast_vrf_neighbor" "ce1_to_pe1" {
   ip                           = "200.1.1.2"
   remote_as                    = "714"
   description                  = "Apple CE1"
+  default_originate            = "true"
   shutdown                     = false
   log_neighbor_changes_disable = false
   password_type                = 1
@@ -48,6 +49,7 @@ resource "iosxe_bgp_ipv4_unicast_vrf_neighbor" "ce1_to_pe1" {
   version                      = 4
   activate                     = true
   send_community               = "both"
+  soft_reconfiguration         = "inbound"
   route_reflector_client       = false
   route_maps = [
     {
