@@ -16,6 +16,20 @@ resource "iosxe_interface_ethernet" "applege2" {
   ipv6_enable       = false
   arp_timeout       = 300
 }
+resource "iosxe_interface_ethernet" "applege3" {
+  type              = "GigabitEthernet"
+  name              = "3"
+  vrf_forwarding    = "edge"
+  description       = "_to_DUMMY_32_TEST"
+  shutdown          = false
+  ip_proxy_arp      = false
+  ip_redirects      = false
+  ip_unreachables   = false
+  ipv4_address      = "169.254.0.1"
+  ipv4_address_mask = "255.255.255.254"
+  ipv6_enable       = false
+  arp_timeout       = 300
+}
 resource "iosxe_interface_loopback" "appleloopback" {
   name              = 10
   description       = "Apple Test Loopback"
