@@ -17,7 +17,7 @@ resource "iosxe_bgp_ipv4_unicast_vrf_neighbor" "ce1_to_pe1" {
   asn                          = "4771"
   vrf                          = "internet"
   ip                           = "200.1.1.2"
-  remote_as                    = "4771"
+  remote_as                     = "714"
   description                  = "Apple CE1"
   shutdown                     = false
   log_neighbor_changes_disable = true
