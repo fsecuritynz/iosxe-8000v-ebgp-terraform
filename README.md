@@ -1,4 +1,7 @@
 # iosxe-8000v-ebgp-terraform
+![image](https://github.com/fsecuritynz/iosxe-8000v-ebgp-terraform/assets/45273776/75b9d1b3-8e86-4ae9-8cdd-65f9a9a69f12)
+
+
 
 # Overview
 Utilises the new Cisco IOS-XE Terraform Provider to deploy:
@@ -73,3 +76,8 @@ https://registry.terraform.io/providers/CiscoDevNet/iosxe/latest/docs
 - Remote ASN: 4771
 - Route-map Out: rm-ce1-out
 - Route-map In: rm-ce1-in
+
+
+# Missing Features from the Terraform IOSXE Provider Module 
+- Default-originate within the BGP peer
+- Soft Reconfiguration within the BGP Peer

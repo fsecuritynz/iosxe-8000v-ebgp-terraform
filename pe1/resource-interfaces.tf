@@ -1,3 +1,6 @@
+#
+# Configure GigabitEthernet Interface, within VRF
+#
 resource "iosxe_interface_ethernet" "ge2" {
   type              = "GigabitEthernet"
   name              = "2"
